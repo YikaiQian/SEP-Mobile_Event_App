@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_general_fragment">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.sepapp.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.sepapp.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.sepapp.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_all_sessions"
+        android:name="com.example.sepapp.ui.allsessions.SessionsFragment"
+        android:label="@string/title_all_sessions"
+        tools:layout="@layout/fragment_all_sessions">
+        <action
+            android:id="@+id/action_nav_session_detail"
+            app:destination="@id/session_detail_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/session_detail_fragment"
+        android:name="com.example.sepapp.ui.sessionDetail.SessionDetailFragment"
+        android:label="@string/title_session_details"
+        tools:layout="@layout/fragment_session_detail" />
+
+    <fragment
+        android:id="@+id/navigation_my_sessions"
+        android:name="com.example.sepapp.ui.mySessions.MySessionsFragment"
+        android:label="@string/title_my_sessions"
+        tools:layout="@layout/fragment_my_sessions" >
+        <action
+            android:id="@+id/action_nav_my_attend_session_detail"
+            app:destination="@id/fragment_my_attend_session_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_my_attend_session_detail"
+        android:name="com.example.sepapp.ui.mySessions.MyAttendSessionDetail"
+        android:label="@string/title_my_session"
+        tools:layout="@layout/fragment_my_attend_session_detail" />
+    <fragment
+        android:id="@+id/nav_general_fragment"
+        android:name="com.example.sepapp.ui.general.GeneralFragment"
+        android:label="@string/title_general"
+        tools:layout="@layout/fragment_general" />
+
+
+</navigation>

@@ -1,0 +1,27 @@
+[
+  {
+    "eventName": "Clean code",
+    "imageSrc": "https://storage.googleapis.com/material-vignettes.appspot.com/image/0-0.jpg",
+    "description": "Ut rutrum faucibus iaculis. Cras et auctor sapien, in scelerisque lorem. Maecenas suscipit finibus magna, id aliquet orci maximus aliquet."
+  },
+  {
+    "eventName": "Technology & You",
+    "imageSrc": "https://storage.googleapis.com/material-vignettes.appspot.com/image/1-0.jpg",
+    "description": "Vivamus sed hendrerit ex, et ultrices orci. Integer volutpat risus tempor velit laoreet gravida. "
+  },
+  {
+    "eventName": "Professional Development and Interview Prep",
+    "imageSrc": "https://storage.googleapis.com/material-vignettes.appspot.com/image/2-0.jpg",
+    "description": "Maecenas suscipit neque in accumsan feugiat. Donec id aliquet mi."
+  },
+  {
+    "eventName": "The Phoenix Project",
+    "imageSrc": "https://storage.googleapis.com/material-vignettes.appspot.com/image/3-0.jpg",
+    "description": "Vivamus vel fringilla dui, sed mattis risus. Praesent accumsan odio nec metus ornare aliquet. Integer eu lorem ornare, dapibus enim non, rhoncus mi."
+  },
+  {
+    "eventName": "Application Security Seminar",
+    "imageSrc": "https://storage.googleapis.com/material-vignettes.appspot.com/image/4-0.jpg",
+    "description": "Fusce rutrum dui vel tortor rutrum, eu tincidunt erat placerat. Vestibulum ultricies justo id metus laoreet, consequat tristique massa efficitur.",
+  }
+]

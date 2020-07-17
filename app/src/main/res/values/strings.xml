@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">SEP App</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="logo">Logo</string>
+    <string name="hint_username">username</string>
+    <string name="hint_password">password</string>
+    <string name="button_login">Login</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_login_text">Login</string>
+    <string name="button_cancel_text">Cancel</string>
+    <string name="error_login_username_text">Please enter your username</string>
+    <string name="button_view_all_sessions">View all sessions</string>
+    <string name="this_week_headline_text">This Week</string>
+    <string name="presentation_picture_description">presentation picture</string>
+    <string name="session_title">Presentation title</string>
+    <string name="session_time">Time</string>
+    <string name="session_description">presentation description</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sep_sessions_headline">SEP Sessions</string>
+    <string name="session_speaker_text">Speaker:</string>
+    <string name="session_time_text">Session Time:</string>
+    <string name="session_description_text">Description:</string>
+    <string name="button_attend">Attend</string>
+    <string name="session_image">session image</string>
+    <string name="my_attend_sessions">My Sessions</string>
+    <string name="session_list_img">session list img</string>
+    <string name="button_export_to_calendar">Export to calendar</string>
+    <string name="button_unregister">Unregister</string>
+    <string name="search_title">Search</string>
+    <string name="title_general">General</string>
+    <string name="title_all_sessions">All Sessions</string>
+    <string name="title_my_sessions">My Sessions</string>
+    <string name="title_session_details">Session Details</string>
+    <string name="title_my_session">My Session</string>
+    <string name="dummy_description">Description of the session</string>
+</resources>
