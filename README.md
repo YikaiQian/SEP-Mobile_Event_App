@@ -51,7 +51,7 @@ those fragments when the data change.
 ### Navigation
 - Navigation from login activity to main activity is realized by Intent.
 - Navigation between different fragments in main activity uses Navigation
-Component.
+Architecture Component.
 
 
 ### Display Data
@@ -91,7 +91,17 @@ architecture components.
 - Refactor the code and add some necessary comments
 
 
+## Some References
 
+- LinkedIn Learning: 
+   - Android Development Essential Training: Your First App with Kotlin
+   - Android Development Essential Training: The User Interface with Kotlin
+   - Android Development Essential Training: App Architecture with Kotlin
+   - Android Development Essential Training: Manage Data with Kotlin
+   - Android Development: The Navigation Architecture Component
 
+- Material Design code lab: https://codelabs.developers.google.com/codelabs/mdc-101-kotlin/#0
 
- 
+- Room Database: https://developer.android.com/training/data-storage/room
+
+- Android ListView Tutorial: https://www.raywenderlich.com/155-android-listview-tutorial-with-kotlin
