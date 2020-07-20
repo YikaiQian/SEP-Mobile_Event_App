@@ -7,6 +7,21 @@ a good application in such a short time.
 
 So, I will keep update and improve this project on this repo.
 
+## Currently Working On
+Welcome for advice or feedback on this project. Leave message in the repo or reach out to me by other means.
+- UI design
+- Comments
+- Web server API and Admins side
+
+## Update History
+- UI update: 7.20
+  - Redesign the UI of 'general event info' page using `NestedScrollView`. 
+  Contents of event info are added to the fragment programmatically since the number of weeks and
+  the number of sessions per week is not fixed. 
+  - Customize the Color Theme: Material design palette
+  - Add Snackbar messages to improve user experience
+
+
 ## About the project
 This project is focused on the functionality and architecture and. The
 app UI is more or less primitive which will be improved next.
@@ -77,6 +92,7 @@ Data Binding + viewModel = Display data directly in XML file
 ## External Libraries Used
 - Room: Manage Android SQLite Databases
 - Moshi: Parse the Json file
+- Glide: Display images from url
 - Material UI Components: Unified and powerful theming (button, card, font)
 
 
@@ -92,8 +108,10 @@ architecture components.
 
 
 ## Some References
+- Kotlin Bootcamp: https://codelabs.developers.google.com/codelabs/kotlin-bootcamp-welcome/#0
 
 - LinkedIn Learning: 
+   - Kotlin Essential Training
    - Android Development Essential Training: Your First App with Kotlin
    - Android Development Essential Training: The User Interface with Kotlin
    - Android Development Essential Training: App Architecture with Kotlin
