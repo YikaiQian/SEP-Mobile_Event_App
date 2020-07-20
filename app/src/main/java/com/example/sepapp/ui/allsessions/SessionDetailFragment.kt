@@ -1,4 +1,4 @@
-package com.example.sepapp.ui.sessionDetail
+package com.example.sepapp.ui.allsessions
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,7 +13,7 @@ import androidx.navigation.Navigation
 import com.example.sepapp.R
 import com.example.sepapp.databinding.FragmentSessionDetailBinding
 import com.example.sepapp.viewModel.SepSessionViewModel
-import kotlinx.android.synthetic.main.fragment_session_detail.*
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_session_detail.view.*
 
 
@@ -48,8 +48,10 @@ class SessionDetailFragment : Fragment() {
         val view = binding.root
         view.attend_button.setOnClickListener {
             sepSessionViewModel.addSession()
+            val attendSnackBar = Snackbar.make(it, getString(R.string.snackbar_attend_text), Snackbar.LENGTH_LONG)
+            attendSnackBar.setAction(getString(R.string.cancel_text)){sepSessionViewModel.deleteSession()}
+            attendSnackBar.show()
         }
-
 
         return binding.root
     }

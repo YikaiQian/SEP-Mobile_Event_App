@@ -1,28 +1,28 @@
 package com.example.sepapp.ui.general
 
-import android.R.attr.*
-import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.setMargins
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.sepapp.R
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.example.sepapp.data.SepSession
-import com.example.sepapp.ui.allsessions.SessionsRecyclerAdapter
 import com.example.sepapp.viewModel.SepSessionViewModel
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_general.*
+import kotlinx.android.synthetic.main.session_grid_item.*
+import kotlinx.android.synthetic.main.session_grid_item.view.*
 
 
 class GeneralFragment : Fragment() {
@@ -33,10 +33,15 @@ class GeneralFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (requireActivity() as AppCompatActivity).run{
+            supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        }
+        setHasOptionsMenu(true)
+
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_general, container, false)
 
-        val week:Int = 3
+        //val week:Int = 3
 
         sepSessionViewModel = ViewModelProvider(requireActivity()).get(SepSessionViewModel::class.java)
         sepSessionViewModel.allSessionData.observe(viewLifecycleOwner, Observer
@@ -45,8 +50,12 @@ class GeneralFragment : Fragment() {
                 val weekSessions = list.filterIndexed{
                         index, _ ->  index%3==(i-1)
                 }
-                val newCardView = createCardView(i, weekSessions)
-                general_linear_layout.addView(newCardView)
+                general_linear_layout.showDividers = LinearLayout.SHOW_DIVIDER_MIDDLE
+                general_linear_layout.dividerDrawable = resources.getDrawable(R.drawable.divider, null)
+
+                //val newCardView = createCardView(i, weekSessions)
+                //general_linear_layout.addView(newCardView)
+                addWeekScrollView(general_linear_layout, weekSessions, i)
             }
         })
         return view
@@ -54,7 +63,81 @@ class GeneralFragment : Fragment() {
 
 
 
-    fun createCardView(week:Int, sessions:List<SepSession>):MaterialCardView{
+    private fun addWeekScrollView(parent: ViewGroup, sessions:List<SepSession>, week:Int){
+
+        val weekLinerLayout = LinearLayout(context)
+
+        weekLinerLayout.orientation = LinearLayout.VERTICAL
+        val weekLinerLayoutParams = RelativeLayout.LayoutParams(
+            MATCH_PARENT,
+            WRAP_CONTENT
+        )
+
+        //weekLinerLayout.layoutParams.width = MATCH_PARENT
+        //weekLinerLayout.layoutParams.height = WRAP_CONTENT
+        weekLinerLayout.layoutParams = weekLinerLayoutParams
+
+
+        val weekTitle = TextView(weekLinerLayout.context)
+        weekTitle.setTextAppearance(R.style.TextAppearance_MaterialComponents_Headline5)
+        weekTitle.text = getString(R.string.title_week_text, week.toString())
+
+
+        val weekScrollView = HorizontalScrollView(weekLinerLayout.context)
+        val weekScrollViewParams = RelativeLayout.LayoutParams(
+            MATCH_PARENT,
+            WRAP_CONTENT
+        )
+        //weekScrollView.layoutParams.width = MATCH_PARENT
+        //weekScrollView.layoutParams.height = weekScrollViewHeight
+        weekScrollView.layoutParams = weekScrollViewParams
+
+        val scrollLinearLayout = LinearLayout(weekScrollView.context)
+        scrollLinearLayout.orientation = LinearLayout.HORIZONTAL
+        val innerParams = RelativeLayout.LayoutParams(
+            MATCH_PARENT,
+            MATCH_PARENT
+        )
+
+        //scrollLinearLayout.layoutParams.width = MATCH_PARENT
+        //scrollLinearLayout.layoutParams.height = MATCH_PARENT
+        scrollLinearLayout.layoutParams = innerParams
+
+        addWeekSessionsToScrollView(scrollLinearLayout, sessions)
+
+        weekScrollView.addView(scrollLinearLayout)
+        weekLinerLayout.addView(weekTitle)
+        weekLinerLayout.addView(weekScrollView)
+
+        parent.addView(weekLinerLayout)
+    }
+
+    private fun addWeekSessionsToScrollView(parent: ViewGroup, sessions:List<SepSession>){
+        for (session in sessions){
+            val sessionCardView = LayoutInflater.from(context).inflate(R.layout.session_grid_item, parent ,false)
+            sessionCardView.layoutParams.width = 600
+            sessionCardView.setOnClickListener {
+                Snackbar.make(it,"Clickable in 'All Sessions' fragment",Snackbar.LENGTH_LONG).show()
+            }
+
+            Log.i("scroll", session.sessionName)
+            // TODO: Refactor
+            with(sessionCardView) {
+                titleText.text = session.sessionName
+                descriptionText.text = session.description
+                timeText.text = session.date
+
+                Glide.with(parent.rootView)
+                    .load(session.imageSrc)
+                    .into(session_image)
+            }
+
+            parent.addView(sessionCardView)
+        }
+    }
+
+
+    /*fun createCardView(week:Int, sessions:List<SepSession>):MaterialCardView{
         val context = requireContext()
         val cardView = MaterialCardView(context)
 
@@ -100,7 +183,7 @@ class GeneralFragment : Fragment() {
 
         cardView.addView(cardLinearLayout)
         return cardView
-    }
+    }*/
 
 
 }

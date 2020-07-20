@@ -19,6 +19,7 @@ import com.example.sepapp.databinding.FragmentMyAttendSessionDetailBinding
 import com.example.sepapp.databinding.FragmentSessionDetailBinding
 import com.example.sepapp.util.TimeHelper
 import com.example.sepapp.viewModel.SepSessionViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_my_attend_session_detail.view.*
 import kotlinx.android.synthetic.main.fragment_session_detail.view.*
 import java.util.*
@@ -56,6 +57,9 @@ class MyAttendSessionDetail : Fragment() {
         val view = binding.root
         view.button_unregister.setOnClickListener {
             sepSessionViewModel.deleteSession()
+            val unRegisterSnackBar = Snackbar.make(it, getString(R.string.snackbar_unregister_text), Snackbar.LENGTH_LONG)
+            unRegisterSnackBar.setAction(getString(R.string.cancel_text)) {sepSessionViewModel.addSession()}
+            unRegisterSnackBar.show()
         }
 
         view.button_export_calendar.setOnClickListener {
@@ -93,7 +97,7 @@ class MyAttendSessionDetail : Fragment() {
         calendarIntent.putExtra(
             CalendarContract.EXTRA_EVENT_BEGIN_TIME,
             millis
-        );
+        )
 
         startActivity(calendarIntent)
     }

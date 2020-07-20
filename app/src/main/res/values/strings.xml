@@ -36,4 +36,9 @@
     <string name="title_session_details">Session Details</string>
     <string name="title_my_session">My Session</string>
     <string name="dummy_description">Description of the session</string>
+    <string name="general_fragment_title">General Event Info</string>
+    <string name="snackbar_attend_text">Registered successfully.</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="snackbar_unregister_text">Unregistered successfully.</string>
+    <string name="title_week_text">Week %s}</string>
 </resources>

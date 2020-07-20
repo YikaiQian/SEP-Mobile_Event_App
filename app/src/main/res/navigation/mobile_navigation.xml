@@ -6,24 +6,6 @@
     app:startDestination="@+id/nav_general_fragment">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.sepapp.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.sepapp.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.sepapp.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
-
-    <fragment
         android:id="@+id/navigation_all_sessions"
         android:name="com.example.sepapp.ui.allsessions.SessionsFragment"
         android:label="@string/title_all_sessions"
@@ -35,7 +17,7 @@
 
     <fragment
         android:id="@+id/session_detail_fragment"
-        android:name="com.example.sepapp.ui.sessionDetail.SessionDetailFragment"
+        android:name="com.example.sepapp.ui.allsessions.SessionDetailFragment"
         android:label="@string/title_session_details"
         tools:layout="@layout/fragment_session_detail" />
 
