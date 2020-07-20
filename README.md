@@ -8,8 +8,7 @@ a good application in such a short time.
 So, I will keep update and improve this project on this repo.
 
 ## Currently Working On
-Welcome for advice or feedback on this project. Leave message in the repo or reach out to me by other means.
-- UI design
+Welcome for advice or feedback on this project. Leave messages in the repo or reach out to me by other means.
 - Comments
 - Web server API and Admins side
 
