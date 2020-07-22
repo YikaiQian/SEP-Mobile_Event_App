@@ -15,6 +15,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/**
+ * Repository class for session data. (Repository pattern)
+ * Now fetching data from the local database. (web server is in progress)
+ * APIs support operations on session data: Get All, Insert,  Delete
+ */
+
 class SepSessionRepository(val app: Application) {
     val sessionData = MutableLiveData<List<SepSession>>()
     val myAttendSessionData = MutableLiveData<List<SepSession>>()

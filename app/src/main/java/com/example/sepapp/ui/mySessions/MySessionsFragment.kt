@@ -15,6 +15,9 @@ import com.example.sepapp.R
 import com.example.sepapp.data.SepSession
 import com.example.sepapp.viewModel.SepSessionViewModel
 
+/**
+ * This is the fragment where users can view and modify their to-attend list
+ */
 class MySessionsFragment : Fragment(), MySessionListAdapter.SessionListItemListener {
 
     private lateinit var sepSessionViewModel: SepSessionViewModel
@@ -26,6 +29,8 @@ class MySessionsFragment : Fragment(), MySessionListAdapter.SessionListItemListe
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        // Disable the back to home button
         (requireActivity() as AppCompatActivity).run{
             supportActionBar?.setDisplayHomeAsUpEnabled(false)
         }
@@ -34,6 +39,7 @@ class MySessionsFragment : Fragment(), MySessionListAdapter.SessionListItemListe
 
         val view = inflater.inflate(R.layout.fragment_my_sessions, container, false)
 
+        // To-attend list is shown in the listView
         listView = view.findViewById(R.id.my_session_listView)
 
         navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
@@ -48,6 +54,9 @@ class MySessionsFragment : Fragment(), MySessionListAdapter.SessionListItemListe
         return view
     }
 
+    /**
+     * Go to detail fragment if user click one of the session on the fragment
+     */
     override fun onListItemClick(sepSession: SepSession) {
         Log.i("list_log", sepSession.sessionName)
 

@@ -17,7 +17,7 @@ import kotlin.collections.ArrayList
 
 class SessionsRecyclerAdapter (val context: Context,
                                val sessions: List<SepSession>,
-                               val gridItemListener:SessionGridListener):
+                               private val gridItemListener:SessionGridListener):
     RecyclerView.Adapter<SessionsRecyclerAdapter.ViewHolder>(), Filterable{
 
     var sessionsFiltered: List<SepSession> = sessions
@@ -40,27 +40,41 @@ class SessionsRecyclerAdapter (val context: Context,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val presentation = sessionsFiltered[position]
+        val sessionData = sessionsFiltered[position]
+
+        // Fill session data into each grid
         with(holder){
             titleText.let{
-                it.text = presentation.sessionName
-                it.contentDescription = presentation.sessionName
+                it.text = sessionData.sessionName
+                it.contentDescription = sessionData.sessionName
             }
-            dateText.text = presentation.date
-            descriptionText.text = presentation.description
+            dateText.text = sessionData.date
+            descriptionText.text = sessionData.description
+
+            // Display images from url with Glide
             Glide.with(context)
-                .load(presentation.imageSrc)
+                .load(sessionData.imageSrc)
                 .into(image)
         }
+
+
         holder.itemView.setOnClickListener {
-            gridItemListener.onGridItemClick(presentation)
+            gridItemListener.onGridItemClick(sessionData)
         }
     }
 
+
+    /**
+     * The adapter and the fragment are connected in a listener relationship.
+     * The fragment is the listener (grid item onclick event).
+     */
     interface SessionGridListener {
         fun onGridItemClick(sepSession: SepSession)
     }
 
+    /**
+     * Filter of the search bar to select sessions displayed on screen by session name
+     */
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {

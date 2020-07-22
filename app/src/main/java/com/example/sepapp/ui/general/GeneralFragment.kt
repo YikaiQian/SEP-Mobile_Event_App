@@ -1,6 +1,5 @@
 package com.example.sepapp.ui.general
 
-import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,7 +9,6 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.setMargins
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.sepapp.R
@@ -18,13 +16,13 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.example.sepapp.data.SepSession
 import com.example.sepapp.viewModel.SepSessionViewModel
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_general.*
-import kotlinx.android.synthetic.main.session_grid_item.*
 import kotlinx.android.synthetic.main.session_grid_item.view.*
 
-
+/**
+ * This is the fragment where users can view general event info
+ */
 class GeneralFragment : Fragment() {
 
     private lateinit var sepSessionViewModel: SepSessionViewModel
@@ -33,6 +31,8 @@ class GeneralFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        // Disable the back to home button
         (requireActivity() as AppCompatActivity).run{
             supportActionBar?.setDisplayHomeAsUpEnabled(false)
         }
@@ -46,6 +46,7 @@ class GeneralFragment : Fragment() {
         sepSessionViewModel = ViewModelProvider(requireActivity()).get(SepSessionViewModel::class.java)
         sepSessionViewModel.allSessionData.observe(viewLifecycleOwner, Observer
         { list ->
+            // Populate the fragment with 3-week session data
             for (i in 1..3){
                 val weekSessions = list.filterIndexed{
                         index, _ ->  index%3==(i-1)
@@ -61,8 +62,9 @@ class GeneralFragment : Fragment() {
         return view
     }
 
-
-
+    /**
+     * Add One week of sessions into the fragment programmatically with HorizontalScrollView
+     */
     private fun addWeekScrollView(parent: ViewGroup, sessions:List<SepSession>, week:Int){
 
         val weekLinerLayout = LinearLayout(context)
@@ -77,12 +79,12 @@ class GeneralFragment : Fragment() {
         //weekLinerLayout.layoutParams.height = WRAP_CONTENT
         weekLinerLayout.layoutParams = weekLinerLayoutParams
 
-
+        // TextView: Week title
         val weekTitle = TextView(weekLinerLayout.context)
         weekTitle.setTextAppearance(R.style.TextAppearance_MaterialComponents_Headline5)
         weekTitle.text = getString(R.string.title_week_text, week.toString())
 
-
+        // Scroll View: Sessions in a week
         val weekScrollView = HorizontalScrollView(weekLinerLayout.context)
         val weekScrollViewParams = RelativeLayout.LayoutParams(
             MATCH_PARENT,
@@ -111,6 +113,7 @@ class GeneralFragment : Fragment() {
 
         parent.addView(weekLinerLayout)
     }
+
 
     private fun addWeekSessionsToScrollView(parent: ViewGroup, sessions:List<SepSession>){
         for (session in sessions){

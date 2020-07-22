@@ -21,8 +21,6 @@ import com.example.sepapp.util.TimeHelper
 import com.example.sepapp.viewModel.SepSessionViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_my_attend_session_detail.view.*
-import kotlinx.android.synthetic.main.fragment_session_detail.view.*
-import java.util.*
 
 
 class MyAttendSessionDetail : Fragment() {
@@ -48,6 +46,7 @@ class MyAttendSessionDetail : Fragment() {
         sepSessionViewModel =
             ViewModelProvider(requireActivity()).get(SepSessionViewModel::class.java)
 
+        // Android data binding library: display data with simple expressions in the XML file
         val binding = FragmentMyAttendSessionDetailBinding.inflate(
             inflater, container, false
         )
@@ -55,6 +54,7 @@ class MyAttendSessionDetail : Fragment() {
         binding.viewModel = sepSessionViewModel
 
         val view = binding.root
+
         view.button_unregister.setOnClickListener {
             sepSessionViewModel.deleteSession()
             val unRegisterSnackBar = Snackbar.make(it, getString(R.string.snackbar_unregister_text), Snackbar.LENGTH_LONG)
@@ -70,6 +70,9 @@ class MyAttendSessionDetail : Fragment() {
         //return inflater.inflate(R.layout.fragment_my_attend_session_detail, container, false)
     }
 
+    /**
+     * Enable back to home button.
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             navController.navigateUp()
@@ -78,6 +81,9 @@ class MyAttendSessionDetail : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    /**
+     * Export to-attend session to device calendar
+     */
     private fun exportToCalendar() {
         val calendarIntent = Intent(Intent.ACTION_INSERT)
 

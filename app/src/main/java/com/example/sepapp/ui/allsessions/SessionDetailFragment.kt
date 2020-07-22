@@ -37,6 +37,7 @@ class SessionDetailFragment : Fragment() {
 
         sepSessionViewModel = ViewModelProvider(requireActivity()).get(SepSessionViewModel::class.java)
 
+        // Android data binding library: display data with simple expressions in the XML file
         val binding = FragmentSessionDetailBinding.inflate(
             inflater, container, false
         )
@@ -49,7 +50,6 @@ class SessionDetailFragment : Fragment() {
         view.attend_button.setOnClickListener {
             sepSessionViewModel.addSession()
             val attendSnackBar = Snackbar.make(it, getString(R.string.snackbar_attend_text), Snackbar.LENGTH_LONG)
-            attendSnackBar.setAction(getString(R.string.cancel_text)){sepSessionViewModel.deleteSession()}
             attendSnackBar.show()
         }
 
@@ -57,6 +57,9 @@ class SessionDetailFragment : Fragment() {
     }
 
 
+    /**
+     * Enable back to home button.
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == android.R.id.home){
             navController.navigateUp()

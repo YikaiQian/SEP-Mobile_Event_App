@@ -41,4 +41,5 @@
     <string name="cancel_text">Cancel</string>
     <string name="snackbar_unregister_text">Unregistered successfully.</string>
     <string name="title_week_text">Week %s</string>
+    <string name="allsessions_searchbar_hint">Search by title</string>
 </resources>

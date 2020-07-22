@@ -8,8 +8,6 @@ import android.widget.*
 import com.bumptech.glide.Glide
 import com.example.sepapp.R
 import com.example.sepapp.data.SepSession
-import java.util.*
-import kotlin.collections.ArrayList
 
 class MySessionListAdapter(
     val context: Context,
@@ -30,11 +28,13 @@ class MySessionListAdapter(
         val dateText: TextView = rowView.findViewById(R.id.session_time)
         val speakerText: TextView = rowView.findViewById(R.id.session_speaker)
 
+        // Fill session data into each list item
         val mySession = getItem(position) as SepSession
         titleText.text = mySession.sessionName
         dateText.text = mySession.date
         speakerText.text = mySession.speaker
 
+        // Display images from url with Glide
         Glide.with(context)
             .load(mySession.imageSrc)
             .into(image)
@@ -59,6 +59,10 @@ class MySessionListAdapter(
     }
 
 
+    /**
+     * The adapter and the fragment are connected in a listener relationship.
+     * The fragment is the listener (list item onclick event).
+     */
     interface SessionListItemListener {
         fun onListItemClick(sepSession: SepSession)
     }
