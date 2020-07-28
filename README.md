@@ -10,8 +10,19 @@ So, I will keep update and improve this project on this repo.
 ## Currently Working On
 Welcome for advice or feedback on this project. Leave messages in the repo or reach out to me by other means.
 - Web server and Admins side
+  - use Shared Preferences
+  - Firebase later on
+ 
+- backend server
+  - DIY session management
+  - end points in the REST API
+  - database: MongoDB (on Azure)
+  - the server will be hosted on Heroku 
 
 ## Update History
+- Add backend server: 7.28
+  - Currently working on it and the project skeleton link: https://github.com/YikaiQian/sep-backend
+
 - Add comments: 7.21
 
 - UI update: 7.20
